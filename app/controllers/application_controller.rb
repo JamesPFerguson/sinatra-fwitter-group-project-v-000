@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def set_user
-      set_user
+      @user = current_user
     end
   end
 
