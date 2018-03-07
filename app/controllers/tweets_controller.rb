@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
 
   get '/tweets' do
     if logged_in?
-      @user = current_user
+      set_user
       erb :'/tweets/tweets'
     else
       redirect '/login'
@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
 end
 
   post '/tweets' do
-    @user = current_user
+    set_user
     if params[:content] != ""
       @user.tweets << Tweet.create(content: params[:content])
       redirect "/users/#{@user.slug}"
